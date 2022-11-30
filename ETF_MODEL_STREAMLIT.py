@@ -1,3 +1,4 @@
+py -m pip install 'requirements.txt'
 import streamlit as st
 from googleapiclient.discovery import build
 from google.oauth2 import service_account
