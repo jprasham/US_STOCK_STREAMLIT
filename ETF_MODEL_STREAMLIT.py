@@ -1,4 +1,4 @@
-pip3 install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib streamlit
+!pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib streamlit
 import streamlit as st
 from googleapiclient.discovery import build
 from google.oauth2 import service_account
