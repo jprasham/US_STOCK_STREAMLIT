@@ -78,24 +78,24 @@ with st.sidebar:
   d_plt = pd.concat(data,axis = 1)
   st.line_chart(d_plt)
 
-st.write('## ETFs above 50,100,200 DMA')
+st.write('### ETFs above 50,100,200 DMA')
 st.dataframe(ETFs.loc[(ETFs['50DMAModel'] == 'INVESTED') & (ETFs['100DMAModel'] == 'INVESTED') & (ETFs['200DMAModel'] == 'INVESTED')])
 
-st.write('## Change in Trend')
-st.write('### Above 200 DMA And Below 50 DMA')
+st.write('### Change in Trend')
+st.write('#### Above 200 DMA And Below 50 DMA')
 
 st.dataframe(ETFs.loc[(ETFs['200DMAModel'] == 'INVESTED') & (ETFs['50DMAModel'] == 'CASH')])
 
-st.write('### Below 200 DMA And Above 50 DMA')
+st.write('#### Below 200 DMA And Above 50 DMA')
 
 st.dataframe(ETFs.loc[(ETFs['200DMAModel'] == 'INVESTED') & (ETFs['50DMAModel'] == 'CASH') & (ETFs['Fallin1Wmore10']<= 10)])
 
-st.write('## Excess Returns')
-st.write('### Excess Return above 80 percentile')
+st.write('### Excess Returns')
+st.write('#### Excess Return above 80 percentile')
 st.dataframe(ETFs.loc[ETFs['HistExcessReturn_12M']>=80])
 
-st.write('### Excess Return below 20 percentile')
+st.write('#### Excess Return below 20 percentile')
 st.dataframe(ETFs.loc[ETFs['HistExcessReturn_12M']<=20])
 
-st.write('## High volatility and Large Drawdowns')
+st.write('### High volatility and Large Drawdowns')
 st.dataframe(ETFs.loc[(ETFs['HistExcessReturn_12M']<=30) & (ETFs['Fallin1Wmore10'] >=15)])
