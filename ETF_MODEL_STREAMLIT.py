@@ -95,7 +95,7 @@ st.write('#### Excess Return above 80 percentile')
 st.dataframe(ETFs.loc[ETFs['HistExcessReturn_12M']>=80])
 
 st.write('#### Excess Return below 20 percentile')
-st.dataframe(ETFs.loc[ETFs['HistExcessReturn_12M']<=20])
+st.dataframe(ETFs.loc[(ETFs['HistExcessReturn_12M']<=20) & (ETFs['HistExcessReturn_12M']>0)])
 
 st.write('### High volatility and Large Drawdowns')
 st.dataframe(ETFs.loc[(ETFs['HistExcessReturn_12M']<=30) & (ETFs['Fallin1Wmore10'] >=15)])
