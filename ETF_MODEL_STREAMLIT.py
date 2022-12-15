@@ -88,7 +88,7 @@ st.dataframe(ETFs.loc[(ETFs['200DMAModel'] == 'INVESTED') & (ETFs['50DMAModel'] 
 
 st.write('#### Below 200 DMA And Above 50 DMA')
 
-st.dataframe(ETFs.loc[(ETFs['200DMAModel'] == 'INVESTED') & (ETFs['50DMAModel'] == 'CASH') & (ETFs['Fallin1Wmore10']<= 10)])
+st.dataframe(ETFs.loc[(ETFs['200DMAModel'] == 'CASH') & (ETFs['50DMAModel'] == 'INVESTED') & (ETFs['Fallin1Wmore10']<= 10)])
 
 st.write('### Excess Returns')
 st.write('#### Excess Return above 80 percentile')
