@@ -77,11 +77,11 @@ with st.sidebar:
   category = st.multiselect('Category:',category['category'],default= 'Equities')
   etf = st.multiselect('ETF Tickers:', ETFs['Ticker'],default= 'SPY')
 
-  if category  == [] AND etf == []:
+  if (category  == []) AND (etf == []):
     d_etf = ETFs.loc[ETFs['Ticker'] == 'SPY']
-  elif category != [] AND etf ==[]:
+  elif (category != []) AND (etf ==[]):
     d_etf = ETFs.loc[ETFs['Category'].isin(category)]
-  elif category == [] AND etf != []:
+  elif (category == []) AND (etf != []):
     d_etf = ETFs.loc[ETFs['Ticker'].isin(etf)] 
   else:  
     d_etf = ETFs.loc[(ETFs['Ticker'].isin(etf)) & (ETFs['Category'].isin(category)) ]                 
