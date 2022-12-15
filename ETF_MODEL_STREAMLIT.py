@@ -65,16 +65,11 @@ combined_df.set_index('Date', inplace=True)
 combined_df.replace('',np.nan,inplace = True)
 combined_df = combined_df.astype(float)
 
-category = ETFs['Category'].unique()
-
-category = pd.DataFrame(category)
-category.columns = ['category']
-
 st.header('ETF Frame Work')
 
 with st.sidebar:
 
-  category = st.multiselect('Category:',category['category'],default= 'Equities')
+  category = st.multiselect('Category:',ETFs['Category'].unique(),default= 'Equities')
   etf = st.multiselect('ETF Tickers:', ETFs['Ticker'],default= 'SPY')
 
   if (category  == []) and (etf == []):
