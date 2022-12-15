@@ -79,7 +79,7 @@ with st.sidebar:
   etf = st.multiselect('ETF Tickers:', ETFs['Ticker'],default= 'SPY')
   st.write('You selected:', etf)#,': ',ETFs.loc[ETFs['Ticker'] == etf,'Name'])
 
-  if category  == np.nan :
+  if category  == '' :
     d_etf = ETFs.loc[ETFs['Ticker'] == 'SPY']
   else :
     d_etf = ETFs.loc[ETFs['Category'].isin(category)]                    
