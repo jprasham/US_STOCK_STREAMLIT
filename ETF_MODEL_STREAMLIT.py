@@ -67,10 +67,13 @@ combined_df = combined_df.astype(float)
 st.header('ETF Frame Work')
 
 with st.sidebar:
+
+  category = st.multiselect('Category:',category['category'] )
+  st.write('You selected:', category)
   etf = st.multiselect('ETF Tickers:', ETFs['Ticker'],)
   st.write('You selected:', etf)#,': ',ETFs.loc[ETFs['Ticker'] == etf,'Name'])
 
-  d_etf = ETFs.loc[ETFs['Ticker'].isin( etf)]
+  d_etf = ETFs.loc[(ETFs['Ticker'].isin(etf)) & (ETFs['Category'].isin(category))]
   st.dataframe(d_etf)
 
 st.write('### ETFs above 50,100,200 DMA')
