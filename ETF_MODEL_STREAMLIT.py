@@ -67,16 +67,11 @@ combined_df = combined_df.astype(float)
 st.header('ETF Frame Work')
 
 with st.sidebar:
-  etf = st.selectbox('ETF Tickers:', ETFs['Ticker'],)
-  st.write('You selected:', etf,': ',ETFs.loc[ETFs['Ticker'] == etf,'Name'])
-  d_etf = ETFs.loc[ETFs['Ticker'] == etf]
+  etf = st.multiselect('ETF Tickers:', ETFs['Ticker'],)
+  st.write('You selected:', etf)#,': ',ETFs.loc[ETFs['Ticker'] == etf,'Name'])
+
+  d_etf = ETFs.loc[ETFs['Ticker'].isin( etf)]
   st.dataframe(d_etf)
-  data = {"close": combined_df[etf],
-          "50_mean": combined_df[etf].rolling(window=50).mean(),
-          "200_mean": combined_df[etf].rolling(window=200).mean()
-          }
-  d_plt = pd.concat(data,axis = 1)
-  st.line_chart(d_plt)
 
 st.write('### ETFs above 50,100,200 DMA')
 st.dataframe(ETFs.loc[(ETFs['50DMAModel'] == 'INVESTED') & (ETFs['100DMAModel'] == 'INVESTED') & (ETFs['200DMAModel'] == 'INVESTED')])
