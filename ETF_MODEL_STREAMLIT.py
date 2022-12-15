@@ -74,12 +74,17 @@ st.header('ETF Frame Work')
 
 with st.sidebar:
 
-  category = st.multiselect('Category:',category['category'] )
+  category = st.multiselect('Category:',category['category'],default= 'Equities')
   st.write('You selected:', category)
-  etf = st.multiselect('ETF Tickers:', ETFs['Ticker'],)
+  etf = st.multiselect('ETF Tickers:', ETFs['Ticker'],default= 'SPY')
   st.write('You selected:', etf)#,': ',ETFs.loc[ETFs['Ticker'] == etf,'Name'])
 
-  d_etf = ETFs.loc[(ETFs['Ticker'].isin(etf)) | (ETFs['Category'].isin(category))]
+  if category  == np.nan :
+    d_etf = ETFs.loc[ETFs['Ticker'] == 'SPY']
+  else :
+    d_etf = ETFs.loc[ETFs['Category'].isin(category)]                    
+                      
+
   st.dataframe(d_etf)
 
 st.write('### ETFs above 50,100,200 DMA')
