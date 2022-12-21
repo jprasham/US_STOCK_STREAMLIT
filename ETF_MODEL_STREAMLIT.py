@@ -65,43 +65,129 @@ combined_df.set_index('Date', inplace=True)
 combined_df.replace('',np.nan,inplace = True)
 combined_df = combined_df.astype(float)
 
+etf_dma = ETFs.loc[(ETFs['50DMAModel'] == 'INVESTED') & (ETFs['100DMAModel'] == 'INVESTED') & (ETFs['200DMAModel'] == 'INVESTED')]
+etf_tr_1 = ETFs.loc[(ETFs['200DMAModel'] == 'INVESTED') & (ETFs['50DMAModel'] == 'CASH')]
+etf_tr_2 = ETFs.loc[(ETFs['200DMAModel'] == 'CASH') & (ETFs['50DMAModel'] == 'INVESTED') & (ETFs['Fallin1Wmore10']<= 10)]
+etf_ex_1 =ETFs.loc[ETFs['HistExcessReturn_12M']>=80]
+etf_ex_2 = ETFs.loc[ETFs['HistExcessReturn_12M']<=20]
+etf_vol = ETFs.loc[(ETFs['HistExcessReturn_12M']<=30) & (ETFs['Fallin1Wmore10'] >=15)]
+
 st.header('ETF Frame Work')
 
 with st.sidebar:
 
   category = st.multiselect('Category:',ETFs['Category'].unique(),default= 'Equities')
+  sub = st.multiselect ('Sub Category:',ETFs['Sub category'].unique())
   etf = st.multiselect('ETF Tickers:', ETFs['Ticker'],default= 'SPY')
+  
 
-  if (category  == []) and (etf == []):
+  if (category == []) and (etf == []) and (sub ==[]):
+
     d_etf = ETFs.loc[ETFs['Ticker'] == 'SPY']
-  elif (category != []) and (etf ==[]):
+
+  elif (category == []) and (etf == []) and (sub !=[]):
+
+    d_etf = ETFs.loc[ETFs['Sub category'].isin(sub)]
+    etf_dma = etf_dma.loc[etf_dma['Sub category'].isin(sub)]
+    etf_tr_1 = etf_tr_1.loc[etf_tr_1['Sub category'].isin(sub)]
+    etf_tr_2 = etf_tr_2.loc[etf_tr_2['Sub category'].isin(sub)]
+    etf_ex_1 = etf_ex_1.loc[etf_ex_1['Sub category'].isin(sub)]
+    etf_ex_2 = etf_ex_2.loc[etf_ex_2['Sub category'].isin(sub)]
+    etf_vol = etf_vol.loc[etf_vol['Sub category'].isin(sub)]
+
+  elif (category == []) and (etf != []) and (sub ==[]):
+
+    d_etf = ETFs.loc[ETFs['Ticker'].isin(etf)]
+    etf_dma = etf_dma.loc[etf_dma['Ticker'].isin(etf)]
+    etf_tr_1 = etf_tr_1.loc[etf_tr_1['Ticker'].isin(etf)]
+    etf_tr_2 = etf_tr_2.loc[etf_tr_2['Ticker'].isin(etf)]
+    etf_ex_1 = etf_ex_1.loc[etf_ex_1['Ticker'].isin(etf)]
+    etf_ex_2 = etf_ex_2.loc[etf_ex_2['Ticker'].isin(etf)]
+    etf_vol = etf_vol.loc[etf_vol['Ticker'].isin(etf)]
+
+  elif (category == []) and (etf != []) and (sub !=[]):
+    
+    d_etf = ETFs.loc[(ETFs['Ticker'].isin(etf)) & (ETFs['Sub category'].isin(sub))]
+    etf_dma = etf_dma.loc[(etf_dma['Ticker'].isin(etf)) & (etf_dma['Sub category'].isin(sub))]
+    etf_tr_1 = etf_tr_1.loc[(etf_tr_1['Ticker'].isin(etf)) & (etf_tr_1['Sub category'].isin(sub))]
+    etf_tr_2 = etf_tr_2.loc[(etf_tr_2['Ticker'].isin(etf)) & (etf_tr_2['Sub category'].isin(sub))]
+    etf_ex_1 = etf_ex_1.loc[(etf_ex_1['Ticker'].isin(etf)) & (etf_ex_1['Sub category'].isin(sub))]
+    etf_ex_2 = etf_ex_2.loc[(etf_ex_2['Ticker'].isin(etf)) & (etf_ex_2['Sub category'].isin(sub))]
+    etf_vol = etf_vol.loc[(etf_vol['Ticker'].isin(etf)) & (etf_vol['Sub category'].isin(sub))]
+
+
+  elif (category != []) and (etf == []) and (sub ==[]):
+
     d_etf = ETFs.loc[ETFs['Category'].isin(category)]
-  elif (category == []) and (etf != []):
-    d_etf = ETFs.loc[ETFs['Ticker'].isin(etf)] 
-  else:  
-    d_etf = ETFs.loc[(ETFs['Ticker'].isin(etf)) & (ETFs['Category'].isin(category)) ]                 
-                      
+    etf_dma = etf_dma.loc[etf_dma['Category'].isin(category)]
+    etf_tr_1 = etf_tr_1.loc[etf_tr_1['Category'].isin(category)]
+    etf_tr_2 = etf_tr_2.loc[etf_tr_2['Category'].isin(category)]
+    etf_ex_1 = etf_ex_1.loc[etf_ex_1['Category'].isin(category)]
+    etf_ex_2 = etf_ex_2.loc[etf_ex_2['Category'].isin(category)]
+    etf_vol = etf_vol.loc[etf_vol['Category'].isin(category)]
+
+  elif (category != []) and (etf == []) and (sub !=[]):
+
+    d_etf = ETFs.loc[(ETFs['Category'].isin(category)) & (ETFs['Sub category'].isin(sub))]
+    etf_dma = etf_dma.loc[(etf_dma['Category'].isin(category)) & (etf_dma['Sub category'].isin(sub))]
+    etf_tr_1 = etf_tr_1.loc[(etf_tr_1['Category'].isin(category)) & (etf_tr_1['Sub category'].isin(sub))]
+    etf_tr_2 = etf_tr_2.loc[(etf_tr_2['Category'].isin(category)) & (etf_tr_2['Sub category'].isin(sub))]
+    etf_ex_1 = etf_ex_1.loc[(etf_ex_1['Category'].isin(category)) & (etf_ex_1['Sub category'].isin(sub))]
+    etf_ex_2 = etf_ex_2.loc[(etf_ex_2['Category'].isin(category)) & (etf_ex_2['Sub category'].isin(sub))]
+    etf_vol = etf_vol.loc[(etf_vol['Category'].isin(category)) & (etf_vol['Sub category'].isin(sub))]
+
+  elif (category  != []) and (etf != []) and (sub ==[]):
+
+    d_etf = ETFs.loc[(ETFs['Ticker'].isin(etf)) & (ETFs['Category'].isin(category))]
+    etf_dma = etf_dma.loc[(etf_dma['Ticker'].isin(etf)) & (etf_dma['Category'].isin(category))]
+    etf_tr_1 = etf_tr_1.loc[(etf_tr_1['Ticker'].isin(etf)) & (etf_tr_1['Category'].isin(category))]
+    etf_tr_2 = etf_tr_2.loc[(etf_tr_2['Ticker'].isin(etf)) & (etf_tr_2['Category'].isin(category))]
+    etf_ex_1 = etf_ex_1.loc[(etf_ex_1['Ticker'].isin(etf)) & (etf_ex_1['Category'].isin(category))]
+    etf_ex_2 = etf_ex_2.loc[(etf_ex_2['Ticker'].isin(etf)) & (etf_ex_2['Category'].isin(category))]
+    etf_vol = etf_vol.loc[(etf_vol['Ticker'].isin(etf)) & (etf_vol['Category'].isin(category))]
+
+  else:
+
+    d_etf = ETFs.loc[(ETFs['Ticker'].isin(etf)) & (ETFs['Category'].isin(category)) & (ETFs['Sub category'].isin(sub))]
+    etf_dma = etf_dma.loc[(etf_dma['Ticker'].isin(etf)) & (etf_dma['Category'].isin(category)) & (etf_dma['Sub category'].isin(sub))]
+    etf_tr_1 = etf_tr_1.loc[(etf_tr_1['Ticker'].isin(etf)) & (etf_tr_1['Category'].isin(category)) & (etf_tr_1['Sub category'].isin(sub))]
+    etf_tr_2 = etf_tr_2.loc[(etf_tr_2['Ticker'].isin(etf)) & (etf_tr_2['Category'].isin(category)) & (etf_tr_2['Sub category'].isin(sub))]
+    etf_ex_1 = etf_ex_1.loc[(etf_ex_1['Ticker'].isin(etf)) & (etf_ex_1['Category'].isin(category)) & (etf_ex_1['Sub category'].isin(sub))]
+    etf_ex_2 = etf_ex_2.loc[(etf_ex_2['Ticker'].isin(etf)) & (etf_ex_2['Category'].isin(category)) & (etf_ex_2['Sub category'].isin(sub))]
+    etf_vol = etf_vol.loc[(etf_vol['Ticker'].isin(etf)) & (etf_vol['Category'].isin(category)) & (etf_vol['Sub category'].isin(sub))]
+   
 
   st.dataframe(d_etf)
 
-st.write('### ETFs above 50,100,200 DMA')
-st.dataframe(ETFs.loc[(ETFs['50DMAModel'] == 'INVESTED') & (ETFs['100DMAModel'] == 'INVESTED') & (ETFs['200DMAModel'] == 'INVESTED')])
 
-st.write('### Change in Trend')
-st.write('#### Above 200 DMA And Below 50 DMA')
+  #data = {"close": combined_df[etf],
+  #        "50_mean": combined_df[etf].rolling(window=50).mean(),
+  #        #"100_mean": combined_df[etf].roling(window = 100).mean(),
+  #        "200_mean": combined_df[etf].rolling(window=200).mean()
+  #        }
+  #d_plt = pd.concat(data,axis = 1)
+  #st.line_chart(d_plt)
 
-st.dataframe(ETFs.loc[(ETFs['200DMAModel'] == 'INVESTED') & (ETFs['50DMAModel'] == 'CASH')])
 
-st.write('#### Below 200 DMA And Above 50 DMA')
 
-st.dataframe(ETFs.loc[(ETFs['200DMAModel'] == 'CASH') & (ETFs['50DMAModel'] == 'INVESTED') & (ETFs['Fallin1Wmore10']<= 10)])
+st.write('## ETFs above 50,100,200 DMA')
+st.dataframe(etf_dma)
 
-st.write('### Excess Returns')
-st.write('#### Excess Return above 80 percentile')
-st.dataframe(ETFs.loc[ETFs['HistExcessReturn_12M']>=80])
+st.write('## Change in Trend')
+st.write('### Above 200 DMA And Below 50 DMA')
 
-st.write('#### Excess Return below 20 percentile')
-st.dataframe(ETFs.loc[(ETFs['HistExcessReturn_12M']<=20) & (ETFs['HistExcessReturn_12M']>0)])
+st.dataframe(etf_tr_1)
 
-st.write('### High volatility and Large Drawdowns')
-st.dataframe(ETFs.loc[(ETFs['HistExcessReturn_12M']<=30) & (ETFs['Fallin1Wmore10'] >=15)])
+st.write('### Below 200 DMA And Above 50 DMA')
+
+st.dataframe(etf_tr_2)
+
+st.write('## Excess Returns')
+st.write('### Excess Return above 80 percentile')
+st.dataframe(etf_ex_1)
+
+st.write('### Excess Return below 20 percentile')
+st.dataframe(etf_ex_2)
+
+st.write('## High volatility and Large Drawdowns')
+st.dataframe(etf_vol)
