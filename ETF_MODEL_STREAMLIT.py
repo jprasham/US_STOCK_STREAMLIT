@@ -174,11 +174,11 @@ st.write('## ETFs above 50,100,200 DMA')
 st.dataframe(etf_dma)
 
 st.write('## Change in Trend')
-st.write('### Above 200 DMA And Below 50 DMA')
+st.write('### Above 200 DMA And Below 50 DMA (-ve reversal)')
 
 st.dataframe(etf_tr_1)
 
-st.write('### Below 200 DMA And Above 50 DMA')
+st.write('### Below 200 DMA And Above 50 DMA(+ve reversal)')
 
 st.dataframe(etf_tr_2)
 
