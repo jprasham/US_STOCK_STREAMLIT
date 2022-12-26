@@ -186,13 +186,3 @@ st.dataframe(etf_ex_2)
 st.write('## High volatility and Large Drawdowns')
 st.dataframe(etf_vol)
 
-st.write('## Select an ETF to view the chart')
-etf1 = st.multiselect('ETF Tickers:', ETFs['Ticker'],default= 'SPY')
-
-data = {"close": combined_df[etf1],
-        "50_mean": combined_df[etf1].rolling(window=50).mean(),
-        "100_mean": combined_df[etf1].rolling(window = 100).mean(),
-        "200_mean": combined_df[etf1].rolling(window=200).mean()
-       }
-d_plt = pd.concat(data,axis = 1)
-st.line_chart(d_plt)
