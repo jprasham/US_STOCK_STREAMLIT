@@ -158,16 +158,10 @@ with st.sidebar:
    
 
   st.dataframe(d_etf)
+  
+  url = "https://drive.google.com/file/d/1Y6kDfVQy-exsuics-oc2glWqtijI1-Dh/view?usp=share_link"
 
-
-  #data = {"close": combined_df[etf],
-  #        "50_mean": combined_df[etf].rolling(window=50).mean(),
-  #        #"100_mean": combined_df[etf].roling(window = 100).mean(),
-  #        "200_mean": combined_df[etf].rolling(window=200).mean()
-  #        }
-  #d_plt = pd.concat(data,axis = 1)
-  #st.line_chart(d_plt)
-
+  st.write("clik on the link to view charts(%s)" % url)
 
 
 st.write('## ETFs above 50,100,200 DMA')
@@ -191,3 +185,14 @@ st.dataframe(etf_ex_2)
 
 st.write('## High volatility and Large Drawdowns')
 st.dataframe(etf_vol)
+
+st.write('## Select an ETF to view the chart')
+etf1 = st.multiselect('ETF Tickers:', ETFs['Ticker'],default= 'SPY')
+
+data = {"close": combined_df[etf1],
+        "50_mean": combined_df[etf1].rolling(window=50).mean(),
+        "100_mean": combined_df[etf1].roling(window = 100).mean(),
+        "200_mean": combined_df[etf1].rolling(window=200).mean()
+       }
+d_plt = pd.concat(data,axis = 1)
+st.line_chart(d_plt)
