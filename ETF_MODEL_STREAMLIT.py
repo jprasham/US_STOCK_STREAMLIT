@@ -170,6 +170,10 @@ with st.sidebar:
   url = "https://drive.google.com/file/d/1Y6kDfVQy-exsuics-oc2glWqtijI1-Dh/view?usp=share_link"
 
   st.write("clik on the link to view charts(%s)" % url)
+  
+  url2 = "https://docs.google.com/spreadsheets/d/1j38MEMdIPUbyGK2Vir7t-NRwaH5TJLNoUdf2l54lC7o/edit?usp=share_link"
+  
+  st.write("clik on the link to view database(%s)" % url2)
 
 st.write('## ETFs above 50,100,200 DMA')
 st.dataframe(etf_dma)
