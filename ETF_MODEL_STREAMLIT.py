@@ -77,9 +77,9 @@ st.header('ETF Frame Work')
 
 with st.sidebar:
 
-  category = st.multiselect('Category:',ETFs['Category'].unique(),default= 'Equities')
+  category = st.multiselect('Category:',ETFs['Category'].unique())
   sub = st.multiselect ('Sub Category:',ETFs['Sub category'].unique())
-  etf = st.multiselect('ETF Tickers:', ETFs['Ticker'],default= 'SPY')
+  etf = st.multiselect('ETF Tickers:', ETFs['Ticker'])
   
 
   if (category == []) and (etf == []) and (sub ==[]):
