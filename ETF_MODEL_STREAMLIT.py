@@ -51,7 +51,6 @@ ETFs[['Beta','Price','Change_1D','Return_1W','Return_1M',
                                                              'ChgRnk_12M','Fallin1Mmore20','Fallin1Wmore10','StdevNegativeReturn',
                                                              'HistExcessReturn_1W','HistExcessReturn_1M','HistExcessReturn_3M',
                                                              'HistExcessReturn_6M','HistExcessReturn_12M']].astype(float)
-ETFs.set_index('ticker_index',inplace = True)
 result = sheet.values().get(spreadsheetId=CL_PR_SHEET_ID,
                             range='Close_Price!A:ZZ').execute()
 values = result.get('values',[]) 
@@ -65,6 +64,9 @@ combined_df['Date'] = pd.to_datetime(combined_df['Date'])
 combined_df.set_index('Date', inplace=True)
 combined_df.replace('',np.nan,inplace = True)
 combined_df = combined_df.astype(float)
+
+ETFs['Ticker_Index'] = ETFs['Ticker']
+ETFs.set_index('Ticker_Index',inplace = True)
 
 etf_dma  = ETFs.loc[(ETFs['50DMAModel'] == 'INVESTED') & (ETFs['100DMAModel'] == 'INVESTED') & (ETFs['200DMAModel'] == 'INVESTED')]
 etf_tr_1 = ETFs.loc[(ETFs['200DMAModel'] == 'INVESTED') & (ETFs['50DMAModel'] == 'CASH')]
