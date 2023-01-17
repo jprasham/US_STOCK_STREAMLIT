@@ -37,7 +37,7 @@ new_header = ETFs.iloc[0]
 ETFs = ETFs[1:] 
 ETFs.columns = new_header
 ETFs.reset_index(drop=True, inplace=True)
-tickers = ETFs['Ticker']
+ticker_index = ETFs['Ticker']
 ETFs[['Beta','Price','Change_1D','Return_1W','Return_1M',
       'Return_3M','Return_6M','Return_12M','PctRank_1W',
       'PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M',
@@ -51,7 +51,7 @@ ETFs[['Beta','Price','Change_1D','Return_1W','Return_1M',
                                                              'ChgRnk_12M','Fallin1Mmore20','Fallin1Wmore10','StdevNegativeReturn',
                                                              'HistExcessReturn_1W','HistExcessReturn_1M','HistExcessReturn_3M',
                                                              'HistExcessReturn_6M','HistExcessReturn_12M']].astype(float)
-ETFs.set_index('Ticker',inplace = True)
+ETFs.set_index('ticker_index',inplace = True)
 result = sheet.values().get(spreadsheetId=CL_PR_SHEET_ID,
                             range='Close_Price!A:ZZ').execute()
 values = result.get('values',[]) 
