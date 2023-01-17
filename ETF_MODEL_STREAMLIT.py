@@ -72,8 +72,8 @@ etf_dma  = ETFs.loc[(ETFs['50DMAModel'] == 'INVESTED') & (ETFs['100DMAModel'] ==
 etf_tr_1 = ETFs.loc[(ETFs['200DMAModel'] == 'INVESTED') & (ETFs['50DMAModel'] == 'CASH')]
 etf_tr_2 = ETFs.loc[(ETFs['200DMAModel'] == 'CASH') & (ETFs['50DMAModel'] == 'INVESTED') & (ETFs['Fallin1Wmore10']<= 10)]
 etf_ex_1 = ETFs.loc[ETFs['HistExcessReturn_12M']>=80]
-etf_ex_2 = ETFs.loc[ETFs['HistExcessReturn_12M']<=20]
-etf_vol  = ETFs.loc[(ETFs['HistExcessReturn_12M']<=30) & (ETFs['Fallin1Wmore10'] >=15)]
+etf_ex_2 = ETFs.loc[(ETFs['HistExcessReturn_12M']<=20) & (ETFs['HistExcessReturn_12M'] != 0) ]
+etf_vol  = ETFs.loc[(ETFs['HistExcessReturn_12M']<=30) & (ETFs['Fallin1Wmore10'] >=15) & (ETFs['HistExcessReturn_12M'] != 0)]
 etf_ex50 = ETFs.loc[(ETFs['HistExcessReturn_12M']>=20) & (ETFs['50DMAModel'] == 'CASH') & (ETFs['100DMAModel'] == 'INVESTED') & (ETFs['200DMAModel'] == 'INVESTED')]
 
 st.header('ETF Frame Work')
