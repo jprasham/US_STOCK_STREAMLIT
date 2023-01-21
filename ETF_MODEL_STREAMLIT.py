@@ -180,7 +180,7 @@ with st.sidebar:
 
   url3 = "https://docs.google.com/spreadsheets/d/1Qc7bDn5_9EKY6vOTju2WRRbdOY44IY0AkiQYhNvfQ8I/edit?usp=share_link"  
 
-  st.write("Link to US data for 30, 60 and 200 DMA " % url3)
+  st.write("Link to US data for DMA " % url3)
 
 st.write('## ETFs above 50,100,200 DMA')
 st.dataframe(etf_dma[['Ticker','Name','Category','Sub category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']])
