@@ -168,38 +168,41 @@ with st.sidebar:
     etf_ex50 = etf_ex50.loc[(etf_ex50['Ticker'].isin(etf)) & (etf_ex50['Category'].isin(category)) & (etf_ex50['Sub category'].isin(sub))]
    
 
-  st.dataframe(d_etf)
+  st.dataframe(d_etf[['Ticker','Name','Category','Sub Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']])
 
   url = "https://drive.google.com/file/d/1Y6kDfVQy-exsuics-oc2glWqtijI1-Dh/view?usp=share_link"
 
-  st.write("clik on the link to view charts(%s)" % url)
-  
+  st.write("Click on the link to view charts(%s) " % url)
+
   url2 = "https://docs.google.com/spreadsheets/d/1j38MEMdIPUbyGK2Vir7t-NRwaH5TJLNoUdf2l54lC7o/edit?usp=share_link"
   
-  st.write("clik on the link to view database(%s)" % url2)
+  st.write("Click on the link to view database(%s) " % url2)
+
+  url3 = "https://docs.google.com/spreadsheets/d/1Qc7bDn5_9EKY6vOTju2WRRbdOY44IY0AkiQYhNvfQ8I/edit?usp=share_link"  
+
+  st.write("Link to US data for 30, 60 AND 200 DMA " % url3)
 
 st.write('## ETFs above 50,100,200 DMA')
-st.dataframe(etf_dma)
+st.dataframe(etf_dma[['Ticker','Name','Category','Sub Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']])
 
 st.write('## Change in Trend')
 st.write('### Above 200 DMA And Below 50 DMA')
 
-st.dataframe(etf_tr_1)
+st.dataframe(etf_tr_1[['Ticker','Name','Category','Sub Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']])
 
 st.write('### Below 200 DMA And Above 50 DMA')
 
-st.dataframe(etf_tr_2)
+st.dataframe(etf_tr_2[['Ticker','Name','Category','Sub Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']])
 
 st.write('## Excess Returns')
 st.write('### Excess Return above 80 percentile')
-st.dataframe(etf_ex_1)
+st.dataframe(etf_ex_1[['Ticker','Name','Category','Sub Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']])
 
 st.write('### Excess Return below 20 percentile')
-st.dataframe(etf_ex_2)
+st.dataframe(etf_ex_2[['Ticker','Name','Category','Sub Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']])
 
 st.write('## High volatility and Large Drawdowns')
-st.dataframe(etf_vol)
+st.dataframe(etf_vol[['Ticker','Name','Category','Sub Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']])
 
 st.write('## Excess Returms > 20 and losing Short Term Momentum(50DMA)')
-st.dataframe(etf_ex50)
-
+st.dataframe(etf_ex50[['Ticker','Name','Category','Sub Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']])
