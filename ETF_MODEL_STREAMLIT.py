@@ -177,6 +177,10 @@ with st.sidebar:
   url2 = "https://docs.google.com/spreadsheets/d/1j38MEMdIPUbyGK2Vir7t-NRwaH5TJLNoUdf2l54lC7o/edit?usp=share_link"
   
   st.write("Click on the link to view database(%s) " % url2)
+  
+  url3 = "https://docs.google.com/spreadsheets/d/1Qc7bDn5_9EKY6vOTju2WRRbdOY44IY0AkiQYhNvfQ8I/edit?usp=share_link"  
+
+  st.write("Link to US data for 30, 60 AND 200 DMA(%s) " % url3)
 
 
 st.write('## ETFs above 50,100,200 DMA')
