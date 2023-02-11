@@ -51,6 +51,7 @@ STOCKS[['Beta','Price','Change_1D','Return_1W','Return_1M',
                                                              'HistExcessReturn_1W','HistExcessReturn_1M','HistExcessReturn_3M',
                                                              'HistExcessReturn_6M','HistExcessReturn_12M']].astype(float)
 
+
 STOCKS['Ticker_Index'] = STOCKS['Ticker']
 STOCKS.set_index('Ticker_Index',inplace = True)
 
