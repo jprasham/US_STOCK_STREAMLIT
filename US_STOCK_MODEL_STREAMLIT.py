@@ -4,7 +4,6 @@ from google.oauth2 import service_account
 import json
 import numpy as np
 import pandas as pd
-
 cred = {'type': 'service_account',
  'project_id': 'etf-model-369713',
  'private_key_id': '45aad76af9ae8f68ff8868b177ade3106abbb6f0',
