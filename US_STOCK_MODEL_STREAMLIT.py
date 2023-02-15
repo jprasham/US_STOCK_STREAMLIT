@@ -64,7 +64,7 @@ stock_ex_2 = STOCKS.loc[(STOCKS['HistExcessReturn_12M']<=20) & (STOCKS['HistExce
 stock_vol  = STOCKS.loc[(STOCKS['HistExcessReturn_12M']<=30) & (STOCKS['Fallin1Wmore10'] >=15) & (STOCKS['HistExcessReturn_12M'] != 0)]
 stock_ex50 = STOCKS.loc[(STOCKS['HistExcessReturn_12M']>=20) & (STOCKS['50DMAModel'] == 'CASH') & (STOCKS['100DMAModel'] == 'INVESTED') & (STOCKS['200DMAModel'] == 'INVESTED')]
 
-st.header('ETF Frame Work')
+st.header('US LARGE CAP Frame Work')
 
 with st.sidebar:
 
