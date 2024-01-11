@@ -112,20 +112,16 @@ with st.sidebar:
 
   st.dataframe(d_stock[['Ticker','Name','Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']])
 
-  url = "https://drive.google.com/file/d/1JYrj4AGBOCW8GhcmOlHU1fqQFgg9lt-R/view?usp=sharing"
+  url = "https://drive.google.com/file/d/17ik5Xj2OBbIkau5sJtOsu9mlUFq4bFFD/view?usp=sharing"
 
   st.write("Click on the link to view charts(%s) " % url)
 
   url2 = "https://docs.google.com/spreadsheets/d/13mS_ier4GgJiqbR0ak8lgV7lWaJyY7ItWUuJH-CyEQg/edit?usp=sharing"
   
   st.write("Click on the link to view database(%s) " % url2)
-
-  url3 = "https://docs.google.com/spreadsheets/d/1Qc7bDn5_9EKY6vOTju2WRRbdOY44IY0AkiQYhNvfQ8I/edit?usp=share_link"  
-
-  st.write("Link to US data for 30, 60 AND 200 DMA(%s) " % url3)
   
-  url4 = "https://etf-model.streamlit.app/"
-  st.write("Link to the ETF Model(%s) " % url4)
+  url3 = "https://etf-model.streamlit.app/"
+  st.write("Link to the ETF Model(%s) " % url3)
 
 st.write('## STOCKS above 50,100,200 DMA')
 st.dataframe(stock_dma[['Ticker','Name','Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']])
