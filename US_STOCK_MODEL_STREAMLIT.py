@@ -52,8 +52,8 @@ STOCKS[['Beta','Price','Change_1D','Return_1W','Return_1M',
                                                              'HistExcessReturn_6M','HistExcessReturn_12M']].astype(float)
 
 
-STOCKS['Ticker_Index'] = STOCKS['Ticker']
-STOCKS.set_index('Ticker_Index',inplace = True)
+#STOCKS['Ticker_Index'] = STOCKS['Ticker']
+#STOCKS.set_index('Ticker_Index',inplace = True)
 
 
 stock_dma  = STOCKS.loc[(STOCKS['50DMAModel'] == 'INVESTED') & (STOCKS['100DMAModel'] == 'INVESTED') & (STOCKS['200DMAModel'] == 'INVESTED')]
@@ -110,7 +110,7 @@ with st.sidebar:
     stock_ex50 = stock_ex50.loc[(stock_ex50['Ticker'].isin(stock)) & (stock_ex50['Category'].isin(category))]
    
 
-  st.dataframe(d_stock[['Ticker','Name','Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']])
+  st.dataframe(d_stock[['Ticker','Name','Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']], hide_index=True)
 
   url = "https://drive.google.com/file/d/17ik5Xj2OBbIkau5sJtOsu9mlUFq4bFFD/view?usp=sharing"
 
@@ -127,27 +127,27 @@ with st.sidebar:
   st.write("Link to the India Model (%s) " % url4)
 
 st.write('## STOCKS above 50,100,200 DMA')
-st.dataframe(stock_dma[['Ticker','Name','Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']])
+st.dataframe(stock_dma[['Ticker','Name','Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']], hide_index=True)
 
 st.write('## Change in Trend')
 st.write('### Above 200 DMA And Below 50 DMA')
 
-st.dataframe(stock_tr_1[['Ticker','Name','Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']])
+st.dataframe(stock_tr_1[['Ticker','Name','Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']], hide_index=True)
 
 st.write('### Below 200 DMA And Above 50 DMA')
 
-st.dataframe(stock_tr_2[['Ticker','Name','Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']])
+st.dataframe(stock_tr_2[['Ticker','Name','Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']], hide_index=True)
 
 st.write('## Excess Returns')
 st.write('### Excess Return above 80 percentile')
-st.dataframe(stock_ex_1[['Ticker','Name','Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']])
+st.dataframe(stock_ex_1[['Ticker','Name','Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']], hide_index=True)
 
 st.write('### Excess Return below 20 percentile')
-st.dataframe(stock_ex_2[['Ticker','Name','Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']])
+st.dataframe(stock_ex_2[['Ticker','Name','Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']], hide_index=True)
 
 st.write('## High volatility and Large Drawdowns')
-st.dataframe(stock_vol[['Ticker','Name','Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']])
+st.dataframe(stock_vol[['Ticker','Name','Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']], hide_index=True)
 
 st.write('## Excess Returms > 20 and losing Short Term Momentum(50DMA)')
-st.dataframe(stock_ex50[['Ticker','Name','Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']])
+st.dataframe(stock_ex50[['Ticker','Name','Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']], hide_index=True)
 
