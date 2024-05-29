@@ -123,8 +123,11 @@ with st.sidebar:
   url3 = "https://etf-model.streamlit.app/"
   st.write("Link to the ETF Model (%s) " % url3)
 
-  url4 = "https://india-stock-model.streamlit.app"
-  st.write("Link to the India Model (%s) " % url4)
+  url4 = "https://fund-holdings.streamlit.app"
+  st.write("Link to the Fund Holdings (%s) " % url4)
+  
+  url5 = "https://india-stock-model.streamlit.app"
+  st.write("Link to the India Model (%s) " % url5)
 
 st.write('## STOCKS above 50,100,200 DMA')
 st.dataframe(stock_dma[['Ticker','Name','Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']], hide_index=True)
